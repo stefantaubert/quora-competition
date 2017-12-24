@@ -33,3 +33,5 @@
 *.py~
 *.pyc
 *.synctex.gz
+/data/test.csv
+/data/train.csv

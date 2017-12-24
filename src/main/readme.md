@@ -24,3 +24,5 @@ https://geeksww.com/tutorials/operating_systems/linux/installation/downloading_c
 	cd ..; cd python-package; sudo /code/libs/anaconda3/envs/py361/bin/python3.6 setup.py install
 
 falls python nicht richtig gelinkt ist, dann muss der exakte pfad zur pythonexecutable angegeben werden anstatt python
+
+/code/libs/anaconda3/envs/py361/bin/python3.6 /code/sttau/quora-bachelor-thesis/python/script_evaluation.py /datasets/sttau/
