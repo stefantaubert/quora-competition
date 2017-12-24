@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/quora-bachelor-thesis.iml" filepath="$PROJECT_DIR$/.idea/quora-bachelor-thesis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/quora-competition.iml" filepath="$PROJECT_DIR$/.idea/quora-competition.iml" />
     </modules>
   </component>
 </project>
