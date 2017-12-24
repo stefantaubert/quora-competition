@@ -1,0 +1,1 @@
+#compare postag instead of words
