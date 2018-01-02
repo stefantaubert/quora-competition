@@ -11,20 +11,20 @@ def full_run():
 
 def run_only(run_only_iterations):
     # Root-Verzeichnis aus Parametern lesen und Pfade initialisieren
-    root = sys.argv[1]
+
     all_start = time.time()
 
     for iteration in run_only_iterations:
         start = time.time()
         print("Starting new iteration... Current:", str(iteration))
 
-        feature_selection.select_features_at(root, iteration)
+        feature_selection.select_features_at(iteration)
 
         # Modell trainieren
-        model_training.train_and_save_model(root)
+        model_training.train_and_save_model()
 
         # Evaluation ausführen
-        evaluation.write_evaluation(root, iteration, True)
+        evaluation.write_evaluation(iteration, True)
 
         print('Iteration ', str(iteration), 'finished. Duration: ', str(round((time.time() - start) / 60, 2)), 'min')
 
@@ -33,7 +33,6 @@ def run_only(run_only_iterations):
 
 def start_at(iteration):
     # Root-Verzeichnis aus Parametern lesen und Pfade initialisieren
-    root = sys.argv[1]
     count_of_iterations = iteration - 1
     max_iterations = 1000
     all_start = time.time()
@@ -45,15 +44,15 @@ def start_at(iteration):
         print("Starting new iteration... Current:", str(count_of_iterations))
 
         if count_of_iterations == iteration:
-            feature_selection.select_features_at(root, iteration)
+            feature_selection.select_features_at(iteration)
         else:
-            feature_selection.select_features(root)
+            feature_selection.select_features()
 
         # Modell trainieren
-        model_training.train_and_save_model(root)
+        model_training.train_and_save_model()
 
         # Evaluation ausführen
-        evaluation.write_evaluation(root, count_of_iterations, False)
+        evaluation.write_evaluation(count_of_iterations, False)
 
         print('Iteration ', str(count_of_iterations), 'finished. Duration: ', str(round((time.time() - start) / 60, 2)),
               'min')
@@ -64,13 +63,13 @@ def start_at(iteration):
 # Vorraussetzung ist, dass alle Features die unten verwendet werden in der Feature-Backup Datei vorhanden sind.
 if __name__ == '__main__':
     fullrun = True
-    fullrun = False
+    #fullrun = False
     if fullrun:
-        feature_extraction.extract_features(sys.argv[1], False, True)
+        #feature_extraction.extract_features(False, True)
         full_run()
         # run_only([969, 349, 515])
     else:
-        feature_extraction.extract_features(sys.argv[1], False, True)
+        feature_extraction.extract_features(False, True)
         start_at(175)
         # run_only([969, 349, 515])
 

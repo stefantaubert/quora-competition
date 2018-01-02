@@ -1,21 +1,20 @@
 import pandas as pd
 import xgboost as xgb
 from time import clock
-import Paths
+import data_paths
 import matplotlib.pyplot as plt
 
-def predict_and_write_testdata(root):
-    Paths.init(root)
+def predict_and_write_testdata():
 
     # Zeit stoppen für das Vorhersagen der Test-Daten.
     start = clock()
     
     # Lade die zuvor berechneten Features für die Trainings-Daten.
-    df_test = pd.read_csv(Paths.Get_TEST_DATA_Path())
-    x_test = pd.read_csv(Paths.Get_TEST_FEATURES_Path(), encoding="ISO-8859-1")
+    df_test = pd.read_csv(data_paths.test)
+    x_test = pd.read_csv(data_paths.test_features, encoding="ISO-8859-1")
 
     # Zuvor trainiertes Modell laden.
-    bst = xgb.Booster(model_file=Paths.Get_MODEL_Path())
+    bst = xgb.Booster(model_file=data_paths.model)
     
     # Test-Daten vorbereiten.
     d_test = xgb.DMatrix(x_test)
@@ -33,6 +32,6 @@ def predict_and_write_testdata(root):
     sub = pd.DataFrame()
     sub['test_id'] = df_test['test_id']
     sub['is_duplicate'] = p_test
-    sub.to_csv(Paths.Get_SUBMISSION_Path(), index=False)
+    sub.to_csv(data_paths.submission, index=False)
 
     print('duration of prediction: ', round(clock()-start, 2), 's')

@@ -8,15 +8,15 @@ import FeatureEngineering
 import Preprocessing
 import pandas as pd
 
-import Paths
+import data_paths
 import prediction
 
 
 def get_all_questions():
     # q_dict = defaultdict(set)
-    df_test = pd.read_csv(Paths.Get_TEST_PREPROCESSED_Path(), encoding="ISO-8859-1")
+    df_test = pd.read_csv(data_paths.test_preprocessed, encoding="ISO-8859-1")
     df_test.fillna('', inplace=True)
-    df_train = pd.read_csv(Paths.Get_TRAIN_PREPROCESSED_Path(), encoding="ISO-8859-1")
+    df_train = pd.read_csv(data_paths.train_preprocessed, encoding="ISO-8859-1")
     df_train.fillna('', inplace=True)
     
     ques = pd.concat([df_train['question1'], df_train['question2'], df_test['question1'], df_test['question2']], axis=0).reset_index(drop='index')
@@ -34,12 +34,12 @@ def generate_data(question):
     df['question1'] = qs 
     df['question2'] = question
     #print(df)
-    df.to_csv(Paths.Get_TMP_DATA_Path(), index=False)
+    df.to_csv(data_paths.Get_TMP_DATA_Path(), index=False)
 
 def get_top_questions(count):
-    submission = pd.read_csv(Paths.Get_TMP_SUBMISSION_Path(), encoding="ISO-8859-1")
+    submission = pd.read_csv(data_paths.Get_TMP_SUBMISSION_Path(), encoding="ISO-8859-1")
     result = submission.sort_values(by=['is_duplicate'], ascending=[False])
-    original_data = pd.read_csv(Paths.Get_TMP_DATA_Path(), encoding="ISO-8859-1")
+    original_data = pd.read_csv(data_paths.Get_TMP_DATA_Path(), encoding="ISO-8859-1")
     print(result[:5])
     counter = 0
     for index, row in result.iterrows():

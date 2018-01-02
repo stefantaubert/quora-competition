@@ -3,16 +3,14 @@ from features.WordLengthFeatures import WordLengthExtractor
 from features.SharedWordsFeature import SharedWordsExtractor
 from features.FrequencyFeatures import FrequencyExtractor
 from features.LevenshteinFeature import LevenshteinExtractor
-import Paths
+import data_paths
 import pandas as pd
 from sclearn_helper import DFFeatureUnion, DFTransform
 from sklearn.pipeline import Pipeline
 import time
 
-
-def extract_features(root, include_test, make_backup=False):
+def extract_features(include_test, make_backup=False):
     now = time.time()
-    Paths.init(root)
 
     pipeline = Pipeline([
         ('preprocessing', Pipeline([
@@ -38,22 +36,22 @@ def extract_features(root, include_test, make_backup=False):
     ])
 
     # Features für die Trainings-Daten berechnen
-    train_data = pd.read_csv(Paths.Get_TRAIN_DATA_Path())
+    train_data = pd.read_csv(data_paths.train)
     train_features = pipeline.transform(train_data)
-    train_features.to_csv(Paths.Get_TRAIN_FEATURES_Path(), index=False)
+    train_features.to_csv(data_paths.train_features, index=False)
 
     if make_backup:
-        train_features.to_csv(Paths.Get_TRAIN_FEATURES_BACKUP_Path(), index=False)
+        train_features.to_csv(data_paths.train_features_backup, index=False)
 
     print('train feature extraction duration: ' + str(time.time() - now))
 
     if include_test:
         # Features für die Test-Daten berechnen
-        test_data = pd.read_csv(Paths.Get_TEST_DATA_Path())
+        test_data = pd.read_csv(data_paths.test)
         test_features = pipeline.transform(test_data)
-        test_features.to_csv(Paths.Get_TEST_FEATURES_Path(), index=False)
+        test_features.to_csv(data_paths.test_features, index=False)
 
         if make_backup:
-            test_features.to_csv(Paths.Get_TEST_FEATURES_BACKUP_Path(), index=False)
+            test_features.to_csv(data_paths.test_features_backup, index=False)
 
         print('total feature extraction duration: ' + str(time.time() - now))

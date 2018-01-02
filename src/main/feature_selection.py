@@ -1,5 +1,5 @@
 import pandas as pd
-import Paths
+import data_paths
 import random
 import hashlib
 import settings
@@ -76,12 +76,10 @@ always_include = []
 
 never_include.extend(always_include)
 
-
-def select_features_at(root, iteration):
+def select_features_at(iteration):
     '''Hinweis: durch das erneute schreiben geht in machen Fällen die letzte Kommastelle verloren oder ändert sich, sollte aber unbedeutend sein.'''
-    Paths.init(root)
     random.seed(seed)
-    x_train = pd.read_csv(Paths.Get_TRAIN_FEATURES_BACKUP_Path(), encoding="ISO-8859-1")
+    x_train = pd.read_csv(data_paths.train_features_backup, encoding="ISO-8859-1")
     all_features = list(x_train)
     all_include_features = [f for f in all_features if f not in never_include]
 
@@ -105,12 +103,11 @@ def select_features_at(root, iteration):
         if feature not in selected_features:
             x_train.drop(feature, axis=1, inplace=True)
 
-    x_train.to_csv(Paths.Get_TRAIN_FEATURES_Path(), index=False)
+    x_train.to_csv(data_paths.train_features, index=False)
 
-def select_features(root):
+def select_features():
     '''Hinweis: durch das erneute schreiben geht in machen Fällen die letzte Kommastelle verloren oder ändert sich, sollte aber unbedeutend sein.'''
-    Paths.init(root)
-    x_train = pd.read_csv(Paths.Get_TRAIN_FEATURES_BACKUP_Path(), encoding="ISO-8859-1")
+    x_train = pd.read_csv(data_paths.train_features_backup, encoding="ISO-8859-1")
     all_features = list(x_train)
     all_include_features = [f for f in all_features if f not in never_include]
 
@@ -129,4 +126,4 @@ def select_features(root):
         if feature not in selected_features:
             x_train.drop(feature, axis=1, inplace=True)
 
-    x_train.to_csv(Paths.Get_TRAIN_FEATURES_Path(), index=False)
+    x_train.to_csv(data_paths.train_features, index=False)

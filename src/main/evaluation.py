@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import log_loss, accuracy_score, recall_score, precision_score, f1_score
 import xgboost as xgb
-import Paths
+import data_paths
 import matplotlib.pyplot as plt
 import os
 import json
@@ -14,15 +14,14 @@ i_30_70 = []
 i_70_150 = []
 i_setted = False
 
-def write_evaluation(root, current_run, save_validation_results):
-    Paths.init(root)
+def write_evaluation(current_run, save_validation_results):
     global i_0_30
     global i_30_70
     global i_70_150
 
     # Lade die zuvor berechneten Features für die Trainings-Daten.
-    x_train = pd.read_csv(Paths.Get_TRAIN_FEATURES_Path(), encoding="ISO-8859-1")
-    df_train = pd.read_csv(Paths.Get_TRAIN_DATA_Path())
+    x_train = pd.read_csv(data_paths.train_features, encoding="ISO-8859-1")
+    df_train = pd.read_csv(data_paths.train)
 
     # Ausgabedaten erstellen.
     y_train = df_train.is_duplicate
@@ -42,7 +41,7 @@ def write_scores(x_valid, right_values, scope, run_id, save_validation_results):
     '''Der scope gibt an: all=alles,75=bis 75,75_150=75-150,150=ab 150.'''
     '''save_validation_results geht vorerst nur für all'''
     # Zuvor trainiertes Modell laden.
-    bst = xgb.Booster(model_file=Paths.Get_MODEL_Path())
+    bst = xgb.Booster(model_file=data_paths.model)
 
     # Test-Daten vorbereiten.
     d_valid = xgb.DMatrix(x_valid)
@@ -75,8 +74,8 @@ def write_scores(x_valid, right_values, scope, run_id, save_validation_results):
     #     "Features": json.dumps(features),
     # }
 
-    if os.path.exists(Paths.Get_EVALUATION_PATH()):
-        df = pd.read_csv(Paths.Get_EVALUATION_PATH(), encoding="ISO-8859-1")
+    if os.path.exists(data_paths.evaluation):
+        df = pd.read_csv(data_paths.evaluation, encoding="ISO-8859-1")
         df = df.append(data_normal_boundary, ignore_index=True)
     else:
         df = pd.DataFrame(data=data_normal_boundary, index=[0], columns=data_normal_boundary.keys())
@@ -84,7 +83,7 @@ def write_scores(x_valid, right_values, scope, run_id, save_validation_results):
     df = df.append(data_0_4, ignore_index=True)
     df = df.append(data_0_6, ignore_index=True)
 
-    df.to_csv(Paths.Get_EVALUATION_PATH(), index=False)
+    df.to_csv(data_paths.evaluation, index=False)
 
     if save_validation_results:
         predicted_values = orig_predicted_values.copy()
@@ -92,11 +91,11 @@ def write_scores(x_valid, right_values, scope, run_id, save_validation_results):
         predicted_values[predicted_values < s] = 0
         predicted_values[predicted_values >= s] = 1
         #Die ergebnisse für das Validierungsset speichern.
-        df_validation = pd.read_csv(Paths.Get_Evaluation_Validation_Data_Path())
+        df_validation = pd.read_csv(data_paths.validation)
         #df_validation["right_values"] = right_values.tolist()
         df_validation["predicted_binary"] = predicted_values.tolist()
         df_validation["predicted"] = orig_predicted_values.tolist()
-        df_validation.to_csv(Paths.Get_Evaluation_Validation_Data_Path_For_Iteration(run_id), index=False)
+        df_validation.to_csv(data_paths.Get_Evaluation_Validation_Data_Path_For_Iteration(run_id), index=False)
 
 def get_data(right_values, orig_predicted_values, rounding_boundary, scope, run_id, x_valid):
     predicted_values = orig_predicted_values.copy()
@@ -152,13 +151,13 @@ def write_important_indicies(x_valid):
     print("Count of questions for 150: " + str(len(i_70_150)))
 
 def write_selected_questions():
-    x_train = pd.read_csv(Paths.Get_TRAIN_DATA_Path(), encoding="ISO-8859-1")
+    x_train = pd.read_csv(data_paths.train, encoding="ISO-8859-1")
     y_train = x_train.is_duplicate
     x_train, x_valid, y_train, y_valid = train_test_split(x_train, y_train, test_size=settings.validation_size, random_state=settings.seed_validation_split)
-    x_valid.to_csv(Paths.Get_Evaluation_Validation_Data_Path(), index=False)
+    x_valid.to_csv(data_paths.validation, index=False)
 
 def get_important_indicies(min_len, max_len):
-    x_train = pd.read_csv(Paths.Get_TRAIN_DATA_Path(), encoding="ISO-8859-1")
+    x_train = pd.read_csv(data_paths.train, encoding="ISO-8859-1")
 
     # Ausgabedaten erstellen.
     y_train = x_train.is_duplicate
@@ -179,7 +178,7 @@ def get_important_indicies(min_len, max_len):
 
 def get_features(x_valid):
     # Zuvor trainiertes Modell laden.
-    bst = xgb.Booster(model_file=Paths.Get_MODEL_Path())
+    bst = xgb.Booster(model_file=data_paths.model)
 
     # Test-Daten vorbereiten.
     d_valid = xgb.DMatrix(x_valid)
@@ -191,7 +190,7 @@ def get_features(x_valid):
 
 def get_feature_importances(x_valid):
     # Zuvor trainiertes Modell laden.
-    bst = xgb.Booster(model_file=Paths.Get_MODEL_Path())
+    bst = xgb.Booster(model_file=data_paths.model)
 
     # Test-Daten vorbereiten.
     d_valid = xgb.DMatrix(x_valid)
@@ -214,4 +213,4 @@ def plt_features(bst, d_test):
     xgb.plot_importance(mapped, color='red', ax=ax)
     # plt.show()
     plt.draw()
-    plt.savefig(Paths.Get_FEATURES_PLT_Path())
+    plt.savefig(data_paths.features_plt)

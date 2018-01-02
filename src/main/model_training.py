@@ -4,12 +4,12 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import log_loss, accuracy_score, recall_score, precision_score, f1_score
 import xgboost as xgb
-import Paths
+import data_paths
 import settings
 
 def plt_features(d_test):
     # Ausschlagskraft aller Features plotten
-    bst = xgb.Booster(model_file=Paths.Get_MODEL_Path())
+    bst = xgb.Booster(model_file=data_paths.model)
     import matplotlib.pyplot as plt
     fig, ax = plt.subplots(figsize=(12,18))
     # print("Features names:")
@@ -21,18 +21,16 @@ def plt_features(d_test):
     xgb.plot_importance(mapped, color='red', ax=ax)
     # plt.show()
     plt.draw()
-    plt.savefig(Paths.Get_FEATURES_PLT_Path())
+    plt.savefig(data_paths.features_plt)
 
 
-def train_and_save_model(root):
+def train_and_save_model():
     # Zeit stoppen für das Trainieren des Modells.
     start = time.time()
 
-    Paths.init(root)
-
     # Lade die zuvor berechneten Features für die Trainings-Daten.
-    x_train = pd.read_csv(Paths.Get_TRAIN_FEATURES_Path(), encoding="ISO-8859-1")
-    df_train = pd.read_csv(Paths.Get_TRAIN_DATA_Path())
+    x_train = pd.read_csv(data_paths.train_features, encoding="ISO-8859-1")
+    df_train = pd.read_csv(data_paths.train)
 
     # Ausgabedaten erstellen.
     y_train = df_train.is_duplicate
@@ -51,7 +49,7 @@ def train_and_save_model(root):
     # params['scale_pos_weight'] = 0.36 #für test set
 
     # Berechnungen mit der GPU ausführen
-    params['updater'] = 'grow_gpu'
+    #params['updater'] = 'grow_gpu'
 
     # Datenmatrix für die Eingabedaten erstellen.
     d_train = xgb.DMatrix(x_train, label=y_train)
@@ -67,8 +65,8 @@ def train_and_save_model(root):
     bst = xgb.train(params, d_train, settings.num_boosting_rounds, watchlist, early_stopping_rounds=50, verbose_eval=500)
 
     # Modell speichern.
-    bst.dump_model(Paths.Get_MODEL_DUMP_Path())
-    bst.save_model(Paths.Get_MODEL_Path())
+    bst.dump_model(data_paths.model_dump)
+    bst.save_model(data_paths.model)
 
     predicted = bst.predict(d_valid)
 

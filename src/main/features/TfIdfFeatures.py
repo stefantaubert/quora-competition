@@ -9,6 +9,8 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from .NoFitMixin import NoFitMixin
 from .Tokenizer import Tokenizer
 import time
+
+# preventing division with zero
 SAFE_DIFF = 0.0001
 
 
