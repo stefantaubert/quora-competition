@@ -21,7 +21,7 @@ class DFFeatureUnion(FeatureUnion):
             delayed(_transform_one)(trans, name, weight, X)
             for name, trans, weight in self._iter())
         return pd.concat(Xs, axis=1, join='inner')
-  
+
 
 class DFTransform(NoFitMixin):
     def __init__(self, func, copy=False):

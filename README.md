@@ -18,8 +18,10 @@ create folder "config" in dir
 create file "data_root" in dir "config"
 insert your root path to your data files in the first line of "data_root"
 - e.g. D:/datasets (win) or /datasets (unix)
+
 insert path for stanford-postagger in the second line of "data_root"
 - e.g. C:/stanford-postagger-full-2017-06-09/stanford-postagger.jar (win) or /code/libs/stanford-postagger-full-2017-06-09/stanford-postagger.jar (unix)
+
 insert path for java in the third line of "data_root"
 - e.g. C:/Program Files/Java/jdk1.8.0_101 (win) or /usr/lib/jvm/java-8-openjdk-amd64/bin/java (unix)
 
@@ -39,7 +41,7 @@ https://github.com/dmlc/xgboost/blob/master/doc/build.md
 
 - if you have old version of cmake: deinstall old version and install new version from https://cmake.org/download/ to usr/local/bin
 
-- open terminal in src/main
+- open terminal in e.g. /lib
 	git clone --recursive https://github.com/dmlc/xgboost
 	cd xgboost; make -j4
 	cd build

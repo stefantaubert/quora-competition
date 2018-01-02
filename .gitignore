@@ -36,6 +36,8 @@
 *.synctex.gz
 /data
 .idea
-data_root
 lib
 /src/playground
+*.md~
+/config
+.gitignore~
