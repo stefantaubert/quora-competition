@@ -49,7 +49,7 @@ def train_and_save_model():
     # params['scale_pos_weight'] = 0.36 #für test set
 
     # Berechnungen mit der GPU ausführen
-    #params['updater'] = 'grow_gpu'
+    params['updater'] = 'grow_gpu'
 
     # Datenmatrix für die Eingabedaten erstellen.
     d_train = xgb.DMatrix(x_train, label=y_train)

@@ -37,3 +37,5 @@
 /data
 .idea
 data_root
+lib
+/src/playground
