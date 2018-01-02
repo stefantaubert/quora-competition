@@ -28,6 +28,7 @@
 *.mdl
 *.pkl
 *.bst
+*.iws
 *.snm
 *.glsdefs
 *.py~
@@ -35,3 +36,5 @@
 *.synctex.gz
 /data/test.csv
 /data/train.csv
+workspace.xml
+tasks.xml

@@ -6,11 +6,12 @@ import nltk
 import pandas as pd
 from nltk.stem.porter import PorterStemmer
 stemmer = PorterStemmer()
+import data_paths
 
 class TestComparing(ComparingBase):
     
     def __init__(self):
-        ComparingBase.__init__(self, "D:/dev/Python/quora-bachelor-thesis/data/test.csv")
+        ComparingBase.__init__(self, data_paths.test)
 
     def predict_and_write_to_csv(self, comparer):
         t1 = clock()

@@ -1,9 +1,10 @@
 import pandas 
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
+import data_paths
 
-df_train = pandas.read_csv("/datasets/sttau/train.csv")
-df_test = pandas.read_csv("/datasets/sttau/test.csv")
+df_train = pandas.read_csv(data_paths.train)
+df_test = pandas.read_csv(data_paths.test)
 
 def show_cloud(df):
 	all_questions = df['question1'].tolist() + df['question2'].tolist()

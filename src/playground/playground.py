@@ -1,6 +1,6 @@
 
 from nltk.stem.wordnet import WordNetLemmatizer
-from stanford_tagger import pos_tag
+from StanfordTagger import pos_tag
 from nltk import bigrams
 from nltk import ProjectiveDependencyParser
 

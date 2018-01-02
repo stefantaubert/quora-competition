@@ -1,8 +1,9 @@
 import pandas  # data processing, CSV file I/O (e.g. pd.read_csv)
 import matplotlib.pyplot as plt
+import data_paths
 
-df_train = pandas.read_csv("/datasets/sttau/train.csv")
-df_test = pandas.read_csv("/datasets/sttau/test.csv")
+df_train = pandas.read_csv(data_paths.train)
+df_test = pandas.read_csv(data_paths.test)
 all_questions = df_train['question1'].tolist() + df_train['question2'].tolist()
 all_test_questions = df_test['question1'].tolist() + df_test['question2'].tolist()
 train_qs = pandas.Series(all_questions).astype(str)
