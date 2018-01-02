@@ -36,5 +36,4 @@
 *.synctex.gz
 /data/test.csv
 /data/train.csv
-workspace.xml
-tasks.xml
+.idea
