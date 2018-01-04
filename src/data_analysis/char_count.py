@@ -11,10 +11,13 @@ test_qs = pandas.Series(all_test_questions).astype(str)
 dist_train = train_qs.apply(len)
 dist_test = test_qs.apply(len)
 
-plt.figure(figsize=(8,2.5))
+#plt.figure(figsize=(8,2.5))
+plt.figure(figsize=(12,8))
 #plt.hist(dist_train, bins=200, range=[0, 200], color='black',normed=True, label='Trainings-Set')
-plt.hist(dist_train, bins=200, range=[0, 200], color='black', alpha=0.6,normed=True, label='Trainings-Set')
-plt.hist(dist_test, bins=200, range=[0, 200], color='darkgrey', normed=True, alpha=0.7, label='Test-Set')
+
+plt.hist(dist_train, bins=200, range=[0, 200], color='royalblue', alpha=0.4, normed=True, label='Trainings-Set')
+plt.hist(dist_test, bins=200, range=[0, 200], color='seagreen', normed=True, alpha=0.5, label='Test-Set')
+
 #plt.title('Histogramm für die Anzahl der Zeichen pro Frage', fontsize=15)
 plt.legend()
 plt.xlabel('Anzahl der Zeichen pro Frage', fontsize=14)

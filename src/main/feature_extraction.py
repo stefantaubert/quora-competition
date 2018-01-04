@@ -9,9 +9,7 @@ from sclearn_helper import DFFeatureUnion, DFTransform
 from sklearn.pipeline import Pipeline
 import time
 
-def extract_features(include_test, make_backup=False):
-    now = time.time()
-
+def get_features(path):
     pipeline = Pipeline([
         ('preprocessing', Pipeline([
             ('fill_na', DFTransform(lambda X: X.fillna('NA'))),
@@ -36,10 +34,16 @@ def extract_features(include_test, make_backup=False):
     ])
 
     # Features für die Trainings-Daten berechnen
-    train_data = pd.read_csv(data_paths.train)
-    train_features = pipeline.transform(train_data)
-    train_features.to_csv(data_paths.train_features, index=False)
+    data = pd.read_csv(path, encoding="ISO-8859-1")
+    features = pipeline.transform(data)
+    return features
 
+
+def extract_features(include_test, make_backup=False):
+    now = time.time()
+
+    train_features = get_features(data_paths.train)
+    train_features.to_csv(data_paths.train_features, index=False)
     if make_backup:
         train_features.to_csv(data_paths.train_features_backup, index=False)
 
@@ -47,11 +51,9 @@ def extract_features(include_test, make_backup=False):
 
     if include_test:
         # Features für die Test-Daten berechnen
-        test_data = pd.read_csv(data_paths.test)
-        test_features = pipeline.transform(test_data)
+        test_features = get_features(data_paths.test)
         test_features.to_csv(data_paths.test_features, index=False)
+#        if make_backup:
+#            test_features.to_csv(data_paths.test_features_backup, index=False)
 
-        if make_backup:
-            test_features.to_csv(data_paths.test_features_backup, index=False)
-
-        print('total feature extraction duration: ' + str(time.time() - now))
+    print('total feature extraction duration: ' + str(time.time() - now))

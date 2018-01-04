@@ -49,3 +49,13 @@ https://github.com/dmlc/xgboost/blob/master/doc/build.md
 	make -j
 	cd ..
 	cd python-package; sudo python setup.py install
+
+# flow
+preprocessing
+extract features from test & train
+1000x
+ select features from train for training
+ train model with selected train features
+ predict validation and save results
+predict with best features test set 
+

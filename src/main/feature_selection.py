@@ -72,7 +72,7 @@ always_include = [
     'tfidf_wm_stops',
 ]
 
-always_include = []
+#always_include = []
 
 never_include.extend(always_include)
 
