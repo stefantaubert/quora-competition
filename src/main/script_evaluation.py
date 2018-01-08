@@ -21,7 +21,7 @@ def run_only(run_only_iterations):
         feature_selection.select_features_at(iteration)
 
         # Modell trainieren
-        model_training.train_and_save_model()
+        #model_training.train_and_save_model()
 
         # Evaluation ausführen
         evaluation.write_evaluation(iteration, True)

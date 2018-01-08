@@ -91,7 +91,7 @@ def write_scores(x_valid, right_values, scope, run_id, save_validation_results):
         predicted_values[predicted_values < s] = 0
         predicted_values[predicted_values >= s] = 1
         #Die ergebnisse für das Validierungsset speichern.
-        df_validation = pd.read_csv(data_paths.validation)
+        df_validation = pd.read_csv(data_paths.validation, encoding="ISO-8859-1")
         #df_validation["right_values"] = right_values.tolist()
         df_validation["predicted_binary"] = predicted_values.tolist()
         df_validation["predicted"] = orig_predicted_values.tolist()

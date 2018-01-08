@@ -12,11 +12,11 @@ dist_train = train_qs.apply(len)
 dist_test = test_qs.apply(len)
 
 #plt.figure(figsize=(8,2.5))
-plt.figure(figsize=(12,8))
+plt.figure(figsize=(9,6))
 #plt.hist(dist_train, bins=200, range=[0, 200], color='black',normed=True, label='Trainings-Set')
 
-plt.hist(dist_train, bins=200, range=[0, 200], color='royalblue', alpha=0.4, normed=True, label='Trainings-Set')
-plt.hist(dist_test, bins=200, range=[0, 200], color='seagreen', normed=True, alpha=0.5, label='Test-Set')
+plt.hist(dist_train, bins=200, range=[0, 200], color='royalblue', alpha=0.4, normed=True, label='Trainingsset')
+plt.hist(dist_test, bins=200, range=[0, 200], color='seagreen', normed=True, alpha=0.5, label='Testset')
 
 #plt.title('Histogramm für die Anzahl der Zeichen pro Frage', fontsize=15)
 plt.legend()
