@@ -30,13 +30,16 @@ I defined five feature groups:
 - **Tf-Idf Features** which calculates the weights of common words
 - **Frequency Features** e.g. count of questionpairs which contains q1
 
-Those five feature groups resulted in <u>43 Features</u>.
+Those five feature groups resulted in 43 Features.
 
 ## Parameter Optimization
-To find the best combination of features I used random search as parameter optimization method. I've done 170 iterations on which I always used new combinations of these features. Then I calculated the scores of the evaluation metrics for the validationset for all scopes and saved the results in an CSV-file. The next iteration began.
+To find the best combination of features I used random search as parameter optimization method. I've done 170 iterations on which I always used new combinations of these features. Then I calculated the scores of the evaluation metrics for the validationset for all scopes and saved the results in an CSV-file. The next iteration began. Here you can see how the CSV-file looked like:
+
+[[screenshots/csv.png|alt=CSV-file example]]
+
 For modell training I choosed XGBoost and the parameters of XGBoost I also varied, for example:
 - max_depth: 6 / 7 / 8
-- num_boosting_rounds: 2,000 / 2,500
+- num_boosting_rounds: 2000 / 2500
 
 The preprocessing of the questions I implemented with a Pipeline and FeatureUnion. I tryed the following:
 - convert all words to lower
@@ -50,6 +53,5 @@ I achieved an accuracy of over 87 percent for the validationset. The best featur
 Also the usage of a tokenizer and lemmatizer increased the accuracy and rounding at 0.4 resulted in the highest f1. Converting all questions to lowercase also add up to a better accuracy.
 
 ## Code
-Go to this [description](https://github.com/stefantaubert/quora-competition/tree/master/src/README.md).
+For install instructions go [here](https://github.com/stefantaubert/quora-competition/tree/master/src).
 If you want to check out me source code you can look up at my GitHub account here: https://github.com/stefantaubert/quora-competition
-I created four projects with PyCharm:
