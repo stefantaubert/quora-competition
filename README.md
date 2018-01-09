@@ -36,7 +36,7 @@ Those five feature groups resulted in 43 Features.
 To find the best combination of features I used random search as parameter optimization method. I've done 170 iterations on which I always used new combinations of these features. Then I calculated the scores of the evaluation metrics for the validationset for all scopes and saved the results in an CSV-file. The next iteration began. Here you can see how the CSV-file looked like:
 
 <p align="center">
-  <img alt="CSV-file example" src="/screenshots/csv.png">
+  <img alt="CSV-file example" src="/screenshots/evaluation.png">
 </p>
 
 For modell training I choosed XGBoost and the parameters of XGBoost I also varied, for example:
