@@ -1,5 +1,5 @@
-[![Python](https://img.shields.io/badge/python-3.6.0-green.svg)]
 # Projects
+![Python](https://img.shields.io/badge/python-3.6.0-green.svg)
 
 All four projects were created with PyCharm.
 
