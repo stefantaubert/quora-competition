@@ -2,34 +2,23 @@
 ![Python](https://img.shields.io/badge/python-3.6.0-green.svg)
 
 All four projects were created with PyCharm.
+- Baseline: This project contains my first approaches with simple implementations like:
+	- RandomComparer: assigns an random value between 0 and 1 to each questionpair
+	- EqualComparer: assigns the value 1 to each questionpair 
 
-## Baseline
+- Dataanalysis: This project I used to analyse the test- and trainingsset: charcount, wordcount, most frequently words.
 
-This project contains my first approaches with simple implementations like:
-- RandomComparer: assigns an random value between 0 and 1 to each questionpair
-- EqualComparer: assigns the value 1 to each questionpair 
+- Evaluation: This project was used to calculate the logloss and get the features which occured in an selection of iterations.
 
-## Dataanalysis
+- Main: This project contains all sourcecode for the approach I described earlier. To execute the evaluation you need to run the script_evaluation-Python file. For predicting the testset you can run script_full.
+	- Application:
+	I created an simple console-application for my final model, in which an user can enter a question of the validationset an gets equal questions as an list in return. This is implementated in the find_common_questions_v2 file.
 
-This project I used to analyse the test- and trainingsset: charcount, wordcount, most frequently words.
+	<p align="center">
+	  <img alt="find_common_questions Screenshot" src="../screenshots/find_common_questions.PNG">
+	</p>
 
-## Evaluation
-
-This project was used to calculate the logloss and get the features which occured in an selection of iterations.
-
-## Main
-
-This project contains all sourcecode for the approach I described earlier. To execute the evaluation you need to run the script_evaluation-Python file. For predicting the testset you can run script_full.
-
-### Application
-
-I created an simple console-application for my final model, in which an user can enter a question of the validationset an gets equal questions as an list in return. This is implementated in the find_common_questions_v2 file.
-
-<p align="center">
-  <img alt="find_common_questions Screenshot" src="../screenshots/find_common_questions.PNG">
-</p>
-
-The first version creates a new dataset which contains your question (which can be any question) combined with all questions of the trainingsset as questionpairs. This new set is gonna be predicted and the pairs with the highest predictions are returned. Unfortunality the results were not good enough, so I have to implement the second version.
+	The first version creates a new dataset which contains your question (which can be any question) combined with all questions of the trainingsset as questionpairs. This new set is gonna be predicted and the pairs with the highest predictions are returned. Unfortunality the results were not good enough, so I have to implement the second version.
 
 ## Getting Started
 You need to install:
@@ -83,9 +72,9 @@ You need to install:
 
 # Acknowlegdement
 Got inspiration from:
-http://github.com/Wrosinski/Kaggle-Quora
-http://github.com/aerdem4/kaggle-quora-dup
-http://github.com/prischu/quora_question_pairs
-http://kaggle.com/c/quora-question-pairs/discussion/34342
-http://kaggle.com/sudalairajkumar/simple-leaky-exploration-notebook-quora
-http://linkedin.com/pulse/kaggle-quora-question-pairs-mar-2017-may-priscilla-li
+- http://github.com/Wrosinski/Kaggle-Quora
+- http://github.com/aerdem4/kaggle-quora-dup
+- http://github.com/prischu/quora_question_pairs
+- http://kaggle.com/c/quora-question-pairs/discussion/34342
+- http://kaggle.com/sudalairajkumar/simple-leaky-exploration-notebook-quora
+- http://linkedin.com/pulse/kaggle-quora-question-pairs-mar-2017-may-priscilla-li
