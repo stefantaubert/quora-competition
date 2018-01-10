@@ -1,7 +1,7 @@
 # Projects
 ![Python](https://img.shields.io/badge/python-3.6.0-green.svg)
 
-All four projects were created with PyCharm.
+All four projects were created with PyCharm and Python 3.6.0.
 - Baseline: This project contains my first approaches with simple implementations like:
 	- RandomComparer: assigns an random value between 0 and 1 to each questionpair
 	- EqualComparer: assigns the value 1 to each questionpair 
@@ -21,9 +21,6 @@ All four projects were created with PyCharm.
 	The first version creates a new dataset which contains your question (which can be any question) combined with all questions of the trainingsset as questionpairs. This new set is gonna be predicted and the pairs with the highest predictions are returned. Unfortunality the results were not good enough, so I have to implement the second version.
 
 ## Getting Started
-You need to install:
-- `Java`
-- `Python 3.6.0`
 
 1. Get the datasets from kaggle.
 	- [Download trainset](https://www.kaggle.com/c/quora-question-pairs/download/train.csv.zip)  
@@ -70,8 +67,8 @@ You need to install:
 	
 10. Finally run script_evaluation.py
 
-# Acknowlegdement
-Got inspiration from:
+# Acknowledgement
+Got inspirations from:
 - http://github.com/Wrosinski/Kaggle-Quora
 - http://github.com/aerdem4/kaggle-quora-dup
 - http://github.com/prischu/quora_question_pairs
