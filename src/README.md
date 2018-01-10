@@ -44,18 +44,17 @@ You need to install:
 
 3. Create a file `data_root` in the directory `/config`.
 
-	3.1. Insert your root path to your data files in the first line of `data_root`
-	
-		- on windows e.g. `D:/datasets`
-		- on linux e.g. `/datasets`
+3.1. Insert your root path to your data files in the first line of `data_root` (required)
+	- on windows e.g. `D:/datasets/quora`
+	- on linux e.g. `/datasets/quora`
 
-	3.2. Insert path for [stanford-postagger](https://nlp.stanford.edu/software/tagger.shtml#Download) in the second line of `data_root`
-		- on windows e.g. `C:/stanford-postagger-full-2017-06-09/stanford-postagger.jar`
-		- on linux e.g. `/code/libs/stanford-postagger-full-2017-06-09/stanford-postagger.jar`
+3.2. Insert path for [stanford-postagger](https://nlp.stanford.edu/software/tagger.shtml#Download) in the second line of `data_root` (optional)
+	- on windows e.g. `C:/stanford-postagger-full-2017-06-09/stanford-postagger.jar`
+	- on linux e.g. `/code/libs/stanford-postagger-full-2017-06-09/stanford-postagger.jar`
 
-	3.3. Insert path for java in the third line of `data_root`:
-		- on windows e.g. `C:/Program Files/Java/jdk1.8.0_101`
-		- on linux e.g. `/usr/lib/jvm/java-8-openjdk-amd64/bin/java`
+3.3. Insert path for java in the third line of `data_root` (optional)
+	- on windows e.g. `C:/Program Files/Java/jdk1.8.0_101`
+	- on linux e.g. `/usr/lib/jvm/java-8-openjdk-amd64/bin/java`
 
 4. Create the folders `/features`, `/submissions`, `/evaluation` and `/evaluation/runs` in your data directory.
 
