@@ -26,7 +26,7 @@ All four projects were created with PyCharm and Python 3.6.0.
 	- [Download trainset](https://www.kaggle.com/c/quora-question-pairs/download/train.csv.zip)  
 	- [Download testset](https://www.kaggle.com/c/quora-question-pairs/download/test.csv.zip) 
 
-2. Unpach the two downloaded csv-files for example to `/data`.
+2. Unzip the two downloaded csv-files for example to `/data`.
 
 3. Create a file `data_root` in the directory `/config`.
 
