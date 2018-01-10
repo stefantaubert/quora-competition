@@ -2,6 +2,8 @@
 
 On Q&A-Portals like Quora, Yahoo! Answers, Ask.fm, WikiAnswers or StackExchange were asked und answered tausands of questions every day. 6 Million of the over 13 million questions on Quora were asked only in the last year (march 2017). Thats are more than 16,000 new questions per day. For this amount of questions it is likely that someone want to ask an question which is alreecause the portal could list equal question to the user at the point he formulates his question. Maybe someone has already answered one of those questions and the questioner can get the answer to his question immediately. Also the seekers of answers find all answers central on one location and they don't have to look on ten versions of the question for an answer. The question responders profit likewise because they have to answer only one time per question. This could result in a better discussion for people with different opinions.
 
+Here you can find a [link](https://www.kaggle.com/c/quora-question-pairs) to the competition on Kaggle.
+
 ## Approach
 To solve this task data I do the following three steps:
 1. analyse the question-pairs from quora
@@ -57,3 +59,7 @@ Also the usage of a tokenizer and lemmatizer increased the accuracy and rounding
 ## Code
 For install instructions go [here](https://github.com/stefantaubert/quora-competition/tree/master/src).
 If you want to check out me source code you can look up at my GitHub account here: https://github.com/stefantaubert/quora-competition
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

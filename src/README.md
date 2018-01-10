@@ -29,7 +29,9 @@ I created an simple console-application for my final model, in which an user can
   <img alt="find_common_questions Screenshot" src="../screenshots/find_common_questions.PNG">
 </p>
 
-The first version creates a new 'testset' which contains your question (which can be any question) combined with all questions of the trainingsset as questionpairs. This new set is gonna be predicted and the pairs with the highest predictions are returned. Unfortunality the results were not good enough, so I have to implement the second version.
+The first version creates a new dataset which contains your question (which can be any question) combined with all questions of the trainingsset as questionpairs. This new set is gonna be predicted and the pairs with the highest predictions are returned. Unfortunality the results were not good enough, so I have to implement the second version.
+
+## Getting Started
 
 # Installation
 The source only only works with python 3.6.0
@@ -57,9 +59,9 @@ The source only only works with python 3.6.0
 4. Create the folders `/features`, `/submissions`, `/evaluation` and `/evaluation/runs` in your data directory.
 
 5. Install all required python libraries. You can use the following command:
-```shell
-pip install pandas sklearn matplotlib fuzzywuzzy nltk numpy editdistance python-Levenshtein
-```
+	```shell
+	pip install pandas sklearn matplotlib fuzzywuzzy nltk numpy editdistance python-Levenshtein
+	```
 
 6. For faster training install xgboost with gpu-support
 	- on windows you find an intruction [here](http://www.picnet.com.au/blogs/guido/post/2016/09/22/xgboost-windows-x64-binaries-for-download/).
@@ -77,4 +79,13 @@ pip install pandas sklearn matplotlib fuzzywuzzy nltk numpy editdistance python-
 		cd python-package; sudo python setup.py install
 		```
 	
-7. Finally run script_evaluation.py.
+7. Finally run script_evaluation.py
+
+# Acknowlegdement
+Got inspiration from:
+http://github.com/Wrosinski/Kaggle-Quora
+http://github.com/aerdem4/kaggle-quora-dup
+http://github.com/prischu/quora_question_pairs
+http://kaggle.com/c/quora-question-pairs/discussion/34342
+http://kaggle.com/sudalairajkumar/simple-leaky-exploration-notebook-quora
+http://linkedin.com/pulse/kaggle-quora-question-pairs-mar-2017-may-priscilla-li
