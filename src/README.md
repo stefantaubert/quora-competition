@@ -32,19 +32,20 @@ I created an simple console-application for my final model, in which an user can
 The first version creates a new dataset which contains your question (which can be any question) combined with all questions of the trainingsset as questionpairs. This new set is gonna be predicted and the pairs with the highest predictions are returned. Unfortunality the results were not good enough, so I have to implement the second version.
 
 ## Getting Started
+You need to install:
+- `Java`
+- `Python 3.6.0`
 
-# Installation
-The source only only works with python 3.6.0
+1. Get the datasets from kaggle.
+	- [Download trainset](https://www.kaggle.com/c/quora-question-pairs/download/train.csv.zip)  
+	- [Download testset](https://www.kaggle.com/c/quora-question-pairs/download/test.csv.zip) 
 
-1. Get the datasets from kaggle (you have to accept the terms)
-	- [Download](https://www.kaggle.com/c/quora-question-pairs/download/train.csv.zip)  traindata
-	- [Download](https://www.kaggle.com/c/quora-question-pairs/download/test.csv.zip) testdata
+2. Unpach the two downloaded csv-files for example to `/data`.
 
-2. Save the two CSV-files for example to `/data`.
-
-3. Create the file `data_root` in the dirctory `/config`.
+3. Create a file `data_root` in the directory `/config`.
 
 	3.1. Insert your root path to your data files in the first line of `data_root`
+	
 		- on windows e.g. `D:/datasets`
 		- on linux e.g. `/datasets`
 
