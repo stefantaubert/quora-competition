@@ -44,26 +44,26 @@ You need to install:
 
 3. Create a file `data_root` in the directory `/config`.
 
-3.1. Insert your root path to your data files in the first line of `data_root` (required)
+4. Insert your root path to your data files in the first line of `data_root` (required)
 	- on windows e.g. `D:/datasets/quora`
 	- on linux e.g. `/datasets/quora`
 
-3.2. Insert path for [stanford-postagger](https://nlp.stanford.edu/software/tagger.shtml#Download) in the second line of `data_root` (optional)
+5. Insert path for [stanford-postagger](https://nlp.stanford.edu/software/tagger.shtml#Download) in the second line of `data_root` (optional)
 	- on windows e.g. `C:/stanford-postagger-full-2017-06-09/stanford-postagger.jar`
 	- on linux e.g. `/code/libs/stanford-postagger-full-2017-06-09/stanford-postagger.jar`
 
-3.3. Insert path for java in the third line of `data_root` (optional)
+6. Insert path for java in the third line of `data_root` (optional)
 	- on windows e.g. `C:/Program Files/Java/jdk1.8.0_101`
 	- on linux e.g. `/usr/lib/jvm/java-8-openjdk-amd64/bin/java`
 
-4. Create the folders `/features`, `/submissions`, `/evaluation` and `/evaluation/runs` in your data directory.
+7. Create the folders `/features`, `/submissions`, `/evaluation` and `/evaluation/runs` in your data directory.
 
-5. Install all required python libraries. You can use the following command:
+8. Install all required python libraries. You can use the following command:
 	```shell
 	pip install pandas sklearn matplotlib fuzzywuzzy nltk numpy editdistance python-Levenshtein
 	```
 
-6. For faster training install xgboost with gpu-support
+9. For faster training install xgboost with gpu-support
 	- on windows you find an intruction [here](http://www.picnet.com.au/blogs/guido/post/2016/09/22/xgboost-windows-x64-binaries-for-download/).
 	- on linux you find an instruction [here](https://github.com/dmlc/xgboost/blob/master/doc/build.md), td;tr:
 		- install cuda toolkit form [here](https://developer.nvidia.com/cuda-downloads?target_os=Linux)
@@ -79,7 +79,7 @@ You need to install:
 		cd python-package; sudo python setup.py install
 		```
 	
-7. Finally run script_evaluation.py
+10. Finally run script_evaluation.py
 
 # Acknowlegdement
 Got inspiration from:
