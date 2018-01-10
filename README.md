@@ -5,6 +5,7 @@ On Q&A-Portals like Quora, Yahoo! Answers, Ask.fm, WikiAnswers or StackExchange 
 Here you can find a [link](https://www.kaggle.com/c/quora-question-pairs) to the competition on Kaggle.
 
 ## Approach
+
 To solve this task data I do the following three steps:
 1. analyse the question-pairs from quora
 2. create an algorithm to idetify same question-meanings
@@ -25,6 +26,7 @@ For those reasons I split up 10 percent of the trainingsset for the validationse
 	- *70_150*: pairs where both questions have between 70 and 150 chars
 
 ## Features
+
 I defined five feature groups:
 - **Word Count Features** e.g. length of q1, count of words of q1 without stopwords
 - **Levenshtein Feature** which calculates the levenshtein-distance for the pair
@@ -35,6 +37,7 @@ I defined five feature groups:
 Those five feature groups resulted in 43 Features.
 
 ## Parameter Optimization
+
 To find the best combination of features I used random search as parameter optimization method. I've done 170 iterations on which I always used new combinations of these features. Then I calculated the scores of the evaluation metrics for the validationset for all scopes and saved the results in an CSV-file. The next iteration began. Here you can see how the CSV-file looked like:
 
 <p align="center">
@@ -53,12 +56,13 @@ The preprocessing of the questions I implemented with a Pipeline and FeatureUnio
 After the training I rounded the resulting predictions to 0 or 1 to make the evaluation possible. Therefor I tryed rounding on 0.4, 0.5 and 0.6 to find the best rounding boundary for the highest f1.
 
 ## Results
+
 I achieved an accuracy of over 87 percent for the validationset. The best feature was the Levenshtein-Feature followed from the Tf-Idf Features. I discovered that with only a low amount of features a good accuracy could be achieved.
 Also the usage of a tokenizer and lemmatizer increased the accuracy and rounding at 0.4 resulted in the highest f1. Converting all questions to lowercase also add up to a better accuracy.
 
 ## Code
+
 For install instructions go [here](https://github.com/stefantaubert/quora-competition/tree/master/src).
-If you want to check out me source code you can look up at my GitHub account here: https://github.com/stefantaubert/quora-competition
 
 ## License
 
