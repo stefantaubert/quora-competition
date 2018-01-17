@@ -16,7 +16,8 @@ def get_plot_location(log_loss_to_plot):
             print(t1[i], res[i])
 
 def plot_logloss():
-    plt.figure(1, figsize=(7,1))
+    #plt.figure(1, figsize=(7,1))
+    plt.figure(1, figsize=(9,5))
     plt.plot(t1,list(map(logloss, y, t1)), color="black")
     #plt.title("Log-Loss Funktion für ein Fragen-Duplikat")
     plt.xlabel("vorhergesagte Wahrscheinlichkeit p")
